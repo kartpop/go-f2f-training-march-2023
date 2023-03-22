@@ -5,8 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/ardanlabs/service/foundation/web"
-	"go.opentelemetry.io/otel/api/global"
+	"github.com/rahulgopher/service/foundation/web"
 )
 
 // Errors handles errors coming out of the call chain. It detects normal
@@ -19,8 +18,8 @@ func Errors(log *log.Logger) web.Middleware {
 
 		// Create the handler that will be attached in the middleware chain.
 		h := func(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
-			ctx, span := global.Tracer("service").Start(ctx, "internal.mid.errors")
-			defer span.End()
+			// ctx, span := global.Tracer("service").Start(ctx, "internal.mid.errors")
+			// defer span.End()
 
 			// If the context is missing this value, request the service
 			// to be shutdown gracefully.

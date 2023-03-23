@@ -26,3 +26,4 @@ https://docs.google.com/document/d/1MoOk6rNfqYKCIObz4-sGnRMZEHoJStAIZS2Ofw0UFUU/
 
 # Expvarmon
 go install github.com/divan/expvarmon@latest
+expvarmon -ports="localhost:4000" -vars="build,requests,goroutines,errors,panics,mem:memstats.Alloc"

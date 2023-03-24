@@ -1,4 +1,5 @@
-// Wait for Result Pattern andf fanout
+// Wait for Result Pattern and fanout
+// Usecase --> function fanoutSemaphore: when producing messages, keep count of goroutines in sync with logical/actual no. of processors
 package main
 
 import (
@@ -57,8 +58,8 @@ func fanOutSemaphore() {
 	//g := runtime.GOMAXPROCS(0)
 	sem := make(chan bool, 5)
 	for i := 0; i < noOftasks; i++ {
+		sem <- true
 		go func(n int) {
-			sem <- true
 			{
 				time.Sleep(time.Second)
 				task <- fmt.Sprintf("%d task completed", n)

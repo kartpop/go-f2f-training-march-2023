@@ -1,5 +1,7 @@
 // Wait for Task Pattern and pooling
 
+// usecase --> consumer tasks
+
 // Parent Goroutine - Sender which is sending task to child
 // Child Goroutie - Reciever which is recieving/ waiting for task
 
@@ -36,6 +38,7 @@ func waitForTask() {
 
 // uses wait for task pattern
 // important for efficiency in resource usage
+// useful for consumer tasks - spin up goroutines = no. of processors and process tasks in parallel
 func pooling() {
 
 	ch := make(chan string)
@@ -89,6 +92,7 @@ func poolingWithoutRange() {
 }
 
 // Bounded work pooling
+// useful when we want to wait for all goroutines to finish their work
 func boundedWorkPooling() {
 
 	ch := make(chan string)
